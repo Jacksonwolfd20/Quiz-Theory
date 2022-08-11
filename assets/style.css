@@ -1,0 +1,172 @@
+:root {
+    --outer-space: #33393f;
+    --bright-turquoise: #2aefcb;
+    --gin: #e0eae4;
+    --heliotrope: #e866ec;
+  }
+  
+  ::selection {
+    background-color: var(--bright-turquoise);
+    color: var(--outer-space);
+  }
+  
+  html {
+    font-size: 62.5%;
+  }
+  
+  body {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 28px;
+    line-height: 1.5;
+    color: var(--gin);
+    background-color: var(--outer-space);
+  }
+  
+  h1,
+  h2,
+  h3 {
+    margin-bottom: 10px;
+    color: var(--heliotrope);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  
+  h1 {
+    font-size: 64px;
+  }
+  
+  h2 {
+    font-size: 56px;
+  }
+  
+  h3 {
+    font-size: 48px;
+  }
+
+  p {
+    margin-bottom: 16px;
+  }
+  
+  header {
+    width: 96%;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  header h1.page-title {
+    padding: 16px 19.2px;
+    font-size: 72px;
+  }
+  
+  main {
+    width: 96%;
+    margin: 32px auto;
+  }
+  
+  footer {
+    margin: 24px;
+    text-align: center;
+  }
+  
+  /* create our main grid with flexbox, use negative margins to offset the padding on the .card-column class */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: -310px;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  /* using a mobile-first approach, set base column width to be 100% and we'll update it using media queries for larger screen sizes */
+  .card-column {
+    flex: 1 0 100%;
+    padding: 24px;
+    /* when the screen resizes, make it so our columns don't jump in size */
+    transition: flex-basis 500ms linear;
+    margin-bottom: 24px;
+    width: 900px;
+    text-align: center;
+  }
+  
+  /* make each code card a flexbox column to align and justify content within it */
+  .code-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100%;
+    padding: 32px;
+    color: var(--heliotrope);
+  
+    /* outline is like border, but on the outside of the box instead of inside */
+    outline: 2px solid var(--gin);
+    outline-offset: -2px;
+    transition: all 0.5s ease-in-out;
+  }
+  
+
+  .code-card .Timer {
+    /* use position and negative margins to move title of card over the card's outline and create an overlap effect */
+    position: relative;
+    margin: -64px 0 24px 0;
+    padding: 8px 16px;
+    background-color: var(--outer-space);
+    color: var(--heliotrope);
+    border: 2px solid var(--gin);
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .Timer{
+    text-align: center;
+  }
+  
+  /* set an outer and inner drop shadow on the card to create a glowing effect on hover */
+  .code-card:hover,
+  .code-card:hover #Timer {
+    box-shadow: inset 0px 0px 8px var(--heliotrope), 0 0 15px var(--heliotrope);
+  }
+
+  
+  /* each card's code block grows to the height of the largest code block on the page, making each card even in height */
+  .code-card .code-block {
+    flex-grow: 1;
+    display: block;
+  }
+
+  .card{
+    
+    width: 900px;
+  }
+  
+  .code-card pre {
+    white-space: pre-wrap;
+    overflow: auto;
+    tab-size: 4;
+    padding: 19.2px 16px;
+    color: var(--gin);
+    border-radius: 8px;
+    background-image: linear-gradient(
+      #e866ec4d 0%,
+      #e866ec99 100%
+    );
+    display: flex;
+    align-items: center;
+  }
+
+
+  @media screen and (min-width: 992px) {
+    header {
+      width: 75%;
+    }
+  
+    .card-column {
+      flex: 0 0 33.333%;
+      max-width: 33.333%;
+      
+    }
+  }
+  
