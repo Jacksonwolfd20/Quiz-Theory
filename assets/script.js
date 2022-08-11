@@ -5,11 +5,12 @@ var Question = document.querySelector(".Question")
 var counter = document.querySelector(".counter")
 var realcounter = 0
 
-realScoreRevealed = document.querySelector(".code-block")
 
+realScoreRevealed = document.querySelector(".code-block")
+//starter text
 Question.textContent = "To start the quiz hit the button below"
 counter.textContent = "0/5"
-// start button
+// creating buttons
 var startButton = document.createElement("button")
 
 var bt1 = document.createElement("button");
@@ -47,10 +48,49 @@ buttons.appendChild(startButton);
 
 startButton.setAttribute("style", " width: 100%; font-size: x-large; background-color: #33393f; color: #e866ec; border-radius: 15px; display: inline-block;");
 
+//start button interaction
 function Start() {
 Timer.textContent = "The Quiz";
 }
 
+function highScore(){
+    if (HighScore < realcounter) {
+        localStorage.setItem("count", HighScore);
+        displayScore.textContent =  "You have a new highscore of " + realcounter + "/5"
+  }else{
+      displayScore.textContent = "your score hasnt beat" + highScore + "/5"
+  }
+
+
+}
+
+
+function failState (){
+        buttons.removeChild(bt1);
+        buttons.removeChild(bt2);
+        buttons.removeChild(bt3);
+        buttons.removeChild(bt4);
+        buttons.removeChild(bt12);
+        buttons.removeChild(bt22);
+        buttons.removeChild(bt32);
+        buttons.removeChild(bt42);
+        buttons.removeChild(bt13);
+        buttons.removeChild(bt23);
+        buttons.removeChild(bt33);
+        buttons.removeChild(bt43);
+        buttons.removeChild(bt14);
+        buttons.removeChild(bt24);
+        buttons.removeChild(bt34);
+        buttons.removeChild(bt44);
+        buttons.removeChild(bt15);
+        buttons.removeChild(bt25);
+        buttons.removeChild(bt35);
+        buttons.removeChild(bt45);
+      } 
+    
+
+
+//the start button
 startButton.addEventListener("click", function() {
     firstQuestion()
 
@@ -67,9 +107,14 @@ startButton.addEventListener("click", function() {
         timeLeft--;
       } else  {
 
+        failState ()
         Timer.textContent = 'Quiz is finished';
 
+    Question.textContent = "your score is " + realcounter +"/5";
+    buttons.appendChild(displayScore);
         clearInterval(timeInterval);
+        
+
 
       }
     }, 1000);
@@ -78,15 +123,16 @@ startButton.addEventListener("click", function() {
 
 Start();
 
+//first question
 function firstQuestion() {
 
-Question.textContent = "To start the quiz hit the button below"
+Question.textContent = "What ingredients are in a cake"
 
 buttons.removeChild(startButton)
-bt1.textContent = "test"
-bt2.textContent = "First Question"
-bt3.textContent = "First Question"
-bt4.textContent = "First Question"
+bt1.textContent = "Flour"
+bt2.textContent = "Steak"
+bt3.textContent = "Soda"
+bt4.textContent = "Plastic"
 
 buttons.appendChild(bt1);
 buttons.appendChild(bt2);
@@ -97,29 +143,36 @@ bt1.setAttribute("style", " width: 100%; font-size: x-large; background-color: #
 bt2.setAttribute("style", " width: 100%; font-size: x-large; background-color: #33393f; color: #e866ec; border-radius: 15px; display: inline-block;");
 bt3.setAttribute("style", " width: 100%; font-size: x-large; background-color: #33393f; color: #e866ec; border-radius: 15px; display: inline-block;");
 bt4.setAttribute("style", " width: 100%; font-size: x-large; background-color: #33393f; color: #e866ec; border-radius: 15px; display: block;");
+
+
+
 };
 
 bt2.addEventListener("click", function() {
     bt2.textContent = "Wrong"
     bt2.setAttribute("style", " width: 100%; font-size: x-large; background-color: #ff0000; color: #ffffff; border-radius: 15px; display: inline-block;")
     timeLeft = timeLeft-10;
+    failState();
+
 })
 bt3.addEventListener("click", function() {
     bt3.textContent = "Wrong"
     bt3.setAttribute("style", " width: 100%; font-size: x-large; background-color: #ff0000; color: #ffffff; border-radius: 15px; display: inline-block;")
     timeLeft = timeLeft-10;
+    failState();
 })
 bt4.addEventListener("click", function() {
     bt4.textContent = "Wrong"
     bt4.setAttribute("style", " width: 100%; font-size: x-large; background-color: #ff0000; color: #ffffff; border-radius: 15px; display: inline-block;")
     timeLeft = timeLeft-10;
+    failState();
 })
 
 //first set of questions
 
 bt1.addEventListener("click", function(){
     
-    Question.textContent = "To start the quiz hit the button below"
+    Question.textContent = "What does a dog not have"
     
     buttons.removeChild(bt1)
     buttons.removeChild(bt2)
@@ -131,10 +184,10 @@ bt1.addEventListener("click", function(){
     buttons.appendChild(bt32);
     buttons.appendChild(bt42);
 
-    bt12.textContent = "second Question"
-    bt22.textContent = "test"
-    bt32.textContent = "second Question"
-    bt42.textContent = "second Question"
+    bt12.textContent = "Hair"
+    bt22.textContent = "Scales"
+    bt32.textContent = "Tails"
+    bt42.textContent = "Teeth"
     
     bt12.setAttribute("style", " width: 100%; font-size: x-large; background-color: #33393f; color: #e866ec; border-radius: 15px; display: inline-block;");
     bt22.setAttribute("style", " width: 100%; font-size: x-large; background-color: #33393f; color: #e866ec; border-radius: 15px; display: inline-block;");
@@ -168,7 +221,7 @@ bt42.addEventListener("click", function() {
 
 bt22.addEventListener("click", function(){
     
-    Question.textContent = "To start the quiz hit the button below"
+    Question.textContent = "Which animal live in the water"
     
     buttons.removeChild(bt12)
     buttons.removeChild(bt22) 
@@ -180,10 +233,10 @@ bt22.addEventListener("click", function(){
     buttons.appendChild(bt33);
     buttons.appendChild(bt43);
 
-    bt13.textContent = "third Question"
-    bt23.textContent = "third Question"
-    bt33.textContent = "third Question"
-    bt43.textContent = "third Question$"
+    bt13.textContent = "Dog"
+    bt23.textContent = "Pig"
+    bt33.textContent = "Cow"
+    bt43.textContent = "Shark"
     
     bt13.setAttribute("style", " width: 100%; font-size: x-large; background-color: #33393f; color: #e866ec; border-radius: 15px; display: inline-block;");
     bt23.setAttribute("style", " width: 100%; font-size: x-large; background-color: #33393f; color: #e866ec; border-radius: 15px; display: inline-block;");
@@ -201,23 +254,26 @@ bt13.addEventListener("click", function() {
     bt13.textContent = "Wrong"
     bt13.setAttribute("style", " width: 100%; font-size: x-large; background-color: #ff0000; color: #ffffff; border-radius: 15px; display: inline-block;")
     timeLeft = timeLeft-10;
+    failState ()
 })
 bt33.addEventListener("click", function() {
     bt33.textContent = "Wrong"
     bt33.setAttribute("style", " width: 100%; font-size: x-large; background-color: #ff0000; color: #ffffff; border-radius: 15px; display: inline-block;")
     timeLeft = timeLeft-10;
+    failState ()
 })
 bt43.addEventListener("click", function() {
     bt43.textContent = "Wrong"
     bt43.setAttribute("style", " width: 100%; font-size: x-large; background-color: #ff0000; color: #ffffff; border-radius: 15px; display: inline-block;")
     timeLeft = timeLeft-10;
+    failState ()
 })
 
 //third set of questions
 
 bt43.addEventListener("click", function(){
     
-    Question.textContent = "To start the quiz hit the button below"
+    Question.textContent = "What animal doesent live in the water"
     
     buttons.removeChild(bt13)
     buttons.removeChild(bt23)
@@ -229,10 +285,10 @@ bt43.addEventListener("click", function(){
     buttons.appendChild(bt34);
     buttons.appendChild(bt44);
 
-    bt14.textContent = "forth Question"
-    bt24.textContent = "forth Question$"
-    bt34.textContent = "forth Question"
-    bt44.textContent = "forth Question"
+    bt14.textContent = "Shark"
+    bt24.textContent = "Dog"
+    bt34.textContent = "Whale"
+    bt44.textContent = "Shrimp"
     
     bt14.setAttribute("style", " width: 100%; font-size: x-large; background-color: #33393f; color: #e866ec; border-radius: 15px; display: inline-block;");
     bt24.setAttribute("style", " width: 100%; font-size: x-large; background-color: #33393f; color: #e866ec; border-radius: 15px; display: inline-block;");
@@ -250,23 +306,26 @@ bt14.addEventListener("click", function() {
     bt14.textContent = "Wrong"
     bt14.setAttribute("style", " width: 100%; font-size: x-large; background-color: #ff0000; color: #ffffff; border-radius: 15px; display: inline-block;")
     timeLeft = timeLeft-10;
+    failState ()
 })
 bt34.addEventListener("click", function() {
     bt34.textContent = "Wrong"
     bt34.setAttribute("style", " width: 100%; font-size: x-large; background-color: #ff0000; color: #ffffff; border-radius: 15px; display: inline-block;")
     timeLeft = timeLeft-10;
+    failState ()
 })
 bt44.addEventListener("click", function() {
     bt44.textContent = "Wrong"
     bt44.setAttribute("style", " width: 100%; font-size: x-large; background-color: #ff0000; color: #ffffff; border-radius: 15px; display: inline-block;")
     timeLeft = timeLeft-10;
+    failState ()
 })
 
 //fourth set of questions
 
 bt24.addEventListener("click", function(){
     
-    Question.textContent = "To start the quiz hit the button below"
+    Question.textContent = "What animal can fly"
     
     buttons.removeChild(bt14)
     buttons.removeChild(bt24)
@@ -278,10 +337,10 @@ bt24.addEventListener("click", function(){
     buttons.appendChild(bt35);
     buttons.appendChild(bt45);
 
-    bt15.textContent = "Fifth Question$"
-    bt25.textContent = "Fifth Question"
-    bt35.textContent = "Fifth Question"
-    bt45.textContent = "Fifth Question"
+    bt15.textContent = "Sparrow"
+    bt25.textContent = "Dog"
+    bt35.textContent = "Whale"
+    bt45.textContent = "Monkey"
     
     bt15.setAttribute("style", " width: 100%; font-size: x-large; background-color: #33393f; color: #e866ec; border-radius: 15px; display: inline-block;");
     bt25.setAttribute("style", " width: 100%; font-size: x-large; background-color: #33393f; color: #e866ec; border-radius: 15px; display: inline-block;");
@@ -299,23 +358,26 @@ bt25.addEventListener("click", function() {
     bt25.textContent = "Wrong"
     bt25.setAttribute("style", " width: 100%; font-size: x-large; background-color: #ff0000; color: #ffffff; border-radius: 15px; display: inline-block;")
     timeLeft = timeLeft-10;
+    failState ()
 })
 bt35.addEventListener("click", function() {
     bt35.textContent = "Wrong"
     bt35.setAttribute("style", " width: 100%; font-size: x-large; background-color: #ff0000; color: #ffffff; border-radius: 15px; display: inline-block;")
     timeLeft = timeLeft-10;
+    failState ()
 })
 bt45.addEventListener("click", function() {
     bt45.textContent = "Wrong"
     bt45.setAttribute("style", " width: 100%; font-size: x-large; background-color: #ff0000; color: #ffffff; border-radius: 15px; display: inline-block;")
     timeLeft = timeLeft-10;
+    failState ()
 })
 
 //fifth set of questions
 
 bt15.addEventListener("click", function(){
     
-    Question.textContent = "To start the quiz hit the button below"
+    Question.textContent = "Test is done"
     
     buttons.removeChild(bt15)
     buttons.removeChild(bt25)
@@ -327,18 +389,6 @@ bt15.addEventListener("click", function(){
     realcounter = realcounter + 1
 
     counter.textContent = realcounter + "/5"
-
-    Timer.textContent = 'Quiz is finished';
-
-    Question.textContent = "your score is " + realcounter +"/5"
-    buttons.appendChild(displayScore)
-    
-        if (HighScore < realcounter) {
-          localStorage.setItem("count", HighScore);
-          displayScore.textContent =  "You have a new highscore of " + realcounter + "/5"
-    }else{
-        displayScore.textContent = "your score hasnt beat" + highScore + "/5"
-    }
 
 
 
