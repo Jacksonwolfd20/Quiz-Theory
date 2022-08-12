@@ -66,7 +66,7 @@ function highScore() {
 
 
 function failState() {
-    if (timeLeft === 0 || timeLeft < 1)
+    if (timeLeft === 0 || timeLeft < 1){
         buttons.removeChild(bt1);
     buttons.removeChild(bt2);
     buttons.removeChild(bt3);
@@ -76,12 +76,12 @@ function failState() {
     Question.textContent = "your score is " + realcounter + "/5";
     buttons.appendChild(displayScore);
     clearInterval(timeInterval);
-
+}
 
 }
 function failState2() {
-    if (timeLeft === 0 || timeLeft < 1)
-        buttons.removeChild(bt12);
+    if (timeLeft === 0 || timeLeft < 1){
+     buttons.removeChild(bt12);
     buttons.removeChild(bt22);
     buttons.removeChild(bt32);
     buttons.removeChild(bt42);
@@ -90,12 +90,12 @@ function failState2() {
     Question.textContent = "your score is " + realcounter + "/5";
     buttons.appendChild(displayScore);
     clearInterval(timeInterval);
-
+    }
 
 }
 function failState3() {
-    if (timeLeft === 0 || timeLeft < 1)
-        buttons.removeChild(bt13);
+    if (timeLeft === 0 || timeLeft < 1){
+    buttons.removeChild(bt13);
     buttons.removeChild(bt23);
     buttons.removeChild(bt33);
     buttons.removeChild(bt43);
@@ -104,12 +104,12 @@ function failState3() {
     Question.textContent = "your score is " + realcounter + "/5";
     buttons.appendChild(displayScore);
     clearInterval(timeInterval);
-
+    }
 
 }
 
 function failState4() {
-    if (timeLeft === 0 || timeLeft < 1)
+    if (timeLeft === 0 || timeLeft < 1){
         buttons.removeChild(bt14);
     buttons.removeChild(bt24);
     buttons.removeChild(bt34);
@@ -119,11 +119,11 @@ function failState4() {
     Question.textContent = "your score is " + realcounter + "/5";
     buttons.appendChild(displayScore);
     clearInterval(timeInterval);
-
+    }
 
 }   
 function failState5() {
-    if (timeLeft === 0 || timeLeft < 1)
+    if (timeLeft === 0 || timeLeft < 1){
         buttons.removeChild(bt15);
     buttons.removeChild(bt25);
     buttons.removeChild(bt35);
@@ -133,7 +133,7 @@ function failState5() {
     Question.textContent = "your score is " + realcounter + "/5";
     buttons.appendChild(displayScore);
     clearInterval(timeInterval);
-
+}
 
 }
 
