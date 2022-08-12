@@ -4,7 +4,9 @@
     --gin: #e0eae4;
     --heliotrope: #e866ec;
   }
-  
+  *{
+    
+  }
   ::selection {
     background-color: var(--bright-turquoise);
     color: var(--outer-space);
